@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("b0f69dc7-529e-498b-aef1-594219e0db1d") = "Orc.CheckForUpdates", "Orc.CheckForUpdates\Orc.CheckForUpdates.csproj", "b691aed3-c1e3-4aa3-babf-19e2085632e8"
+EndProject
+Project("3a42373b-e64a-4482-8ef2-45b96588dac8") = "Orc.CheckForUpdates.Tests", "Orc.CheckForUpdates.Tests\Orc.CheckForUpdates.Tests.csproj", "b691aed3-c1e3-4aa3-babf-19e2085632e8"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		b691aed3-c1e3-4aa3-babf-19e2085632e8.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		b691aed3-c1e3-4aa3-babf-19e2085632e8.Debug|Any CPU.Build.0 = Debug|Any CPU
+		b691aed3-c1e3-4aa3-babf-19e2085632e8.Release|Any CPU.ActiveCfg = Release|Any CPU
+		b691aed3-c1e3-4aa3-babf-19e2085632e8.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

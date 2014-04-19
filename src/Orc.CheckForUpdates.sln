@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CheckForUpdate.BasicSam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CheckForUpdate.Core", "Orc.CheckForUpdate.Core\Orc.CheckForUpdate.Core.csproj", "{4B3AD431-27CD-4BD6-9A57-575D034C36FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CheckForUpdate.SystemWeb", "Orc.CheckForUpdate.SystemWeb\Orc.CheckForUpdate.SystemWeb.csproj", "{3F08BA13-1652-4707-9E85-9CB5BD3A9CB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CheckForUpdate.Web", "Orc.CheckForUpdate.SystemWeb\Orc.CheckForUpdate.Web.csproj", "{3F08BA13-1652-4707-9E85-9CB5BD3A9CB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

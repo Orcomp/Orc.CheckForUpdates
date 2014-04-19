@@ -1,15 +1,18 @@
 ﻿namespace Orc.CheckForUpdate.SystemWeb.Extensions
 {
     using System.Web.Http;
+    using System.Web.Mvc;
 
-    public static class HttpConfigurationExtensions
+    public static class VersionsApiConfig
     {
-        public static void MapVersionApi(this HttpConfiguration config)
+        public static void Register(HttpConfiguration config)
         {
             config.Routes.MapHttpRoute(
                 name: "VersionApi",
-                routeTemplate: "verapi/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional });
+                routeTemplate: "api/versions/{id}",
+                defaults: new { controller = "Versions", id = RouteParameter.Optional });
+
+            System.Web.Mvc.ControllerBuilder.Current.DefaultNamespaces.Add("Orc.CheckForUpdate.Web.Controllers");
         }
     }
 }

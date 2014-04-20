@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CheckForUpdate.Core", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CheckForUpdate.Web", "Orc.CheckForUpdate.SystemWeb\Orc.CheckForUpdate.Web.csproj", "{3F08BA13-1652-4707-9E85-9CB5BD3A9CB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CheckForUpdate.BasicServer", "samples\Orc.CheckForUpdate.BasicServer\Orc.CheckForUpdate.BasicServer.csproj", "{01B76D0A-3EDB-48F7-BF99-2EE172FE12DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{3F08BA13-1652-4707-9E85-9CB5BD3A9CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F08BA13-1652-4707-9E85-9CB5BD3A9CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F08BA13-1652-4707-9E85-9CB5BD3A9CB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01B76D0A-3EDB-48F7-BF99-2EE172FE12DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01B76D0A-3EDB-48F7-BF99-2EE172FE12DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01B76D0A-3EDB-48F7-BF99-2EE172FE12DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01B76D0A-3EDB-48F7-BF99-2EE172FE12DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,5 +49,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E036509A-3084-4308-8778-C7AA675957D0} = {ABE1D6A5-BAA4-4C20-9F84-EB6A43C38D62}
 		{F174E20C-3C87-47FF-9286-02AE79A23D8D} = {E036509A-3084-4308-8778-C7AA675957D0}
+		{01B76D0A-3EDB-48F7-BF99-2EE172FE12DD} = {E036509A-3084-4308-8778-C7AA675957D0}
 	EndGlobalSection
 EndGlobal

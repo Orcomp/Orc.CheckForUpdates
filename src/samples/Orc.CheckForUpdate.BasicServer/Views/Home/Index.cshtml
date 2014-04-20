@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Orc.CheckForUpdate</h1>
+    <p class="lead">
+        Orc.CheckForUpdate is a free open source set of tools 
+        that provides web UI to manage versions of your application and web API 
+        and .Net Client to be part of auto updated application.
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Web UI</h2>
+        <p>
+            Try @Html.ActionLink("Upload", "Upload", "Home") to test functionality which is usually available under Administrator role and is used for uploading new versions of your product.
+        </p>
+        <p>
+            When at least one version is <i>uploaded</i> ready regular user can <b>download</b> new version.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web API</h2>
+        <p>Once this site is up and running it provides API to manage versions remotedly.</p>
+        <p><a class="btn btn-default" href="@Url.Content("~/Images/logo.png")">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>.Net Client</h2>
+        <p>Having API adding auto update feature to the .Net application becoming easy few minutes task. See SampleApplication for example.</p>
+    </div>
+</div>

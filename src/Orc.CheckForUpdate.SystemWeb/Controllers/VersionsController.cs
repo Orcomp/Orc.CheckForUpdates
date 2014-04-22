@@ -36,7 +36,6 @@
         /// The repository.
         /// </param>
         public VersionsController(IVersionRepository repository, IDownloadLinkProvider downloadLinkProvider)
-            : base()
         {
             repository.Server = HttpContext.Current.Server;
             this.repository = repository;

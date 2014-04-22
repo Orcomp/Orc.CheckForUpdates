@@ -15,10 +15,10 @@
     <div class="col-md-4">
         <h2>Web UI</h2>
         <p>
-            Try @Html.ActionLink("Upload", "Upload", "Home") to test functionality which is usually available under Administrator role and is used for uploading new versions of your product.
+            Try @Html.ActionLink("upload", "Upload", "Home") to test functionality which is usually available under Administrator role and is used for uploading new versions of your product.
         </p>
         <p>
-            When at least one version is <i>uploaded</i> ready regular user can <b>download</b> new version.
+            When at least one version is <i>uploaded</i> ready regular user can @Html.ActionLink("download", "Download", "Home") new version.
         </p>
     </div>
     <div class="col-md-4">

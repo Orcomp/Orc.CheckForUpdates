@@ -1,0 +1,19 @@
+﻿@model Orc.CheckForUpdate.Web.Models.VersionsViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section additionalstyles
+{
+    @Styles.Render("~/Content/css/downloads")
+}
+
+<h2>Releases</h2>
+
+<div>
+    @{
+        Html.RenderPartial("ReleasesList", Model);
+    }
+</div>
+

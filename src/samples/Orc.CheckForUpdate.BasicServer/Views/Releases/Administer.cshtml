@@ -1,0 +1,125 @@
+﻿@model Orc.CheckForUpdate.Web.Models.VersionsViewModel
+
+@{
+    ViewBag.Title = "Administer";
+}
+
+@section additionalstyles
+{
+    @Styles.Render("~/Content/css/releases")
+}
+
+<h2>Administer</h2>
+<div>
+
+    @{
+        Html.RenderPartial("ReleasesList", Model);
+    }
+
+    <div id="box_try" style="margin: 30px;">
+        <div class="box_wrapper">
+            <div class="box">
+                <div class="head">
+                    <h4>Upload New Version</h4>
+                </div>
+
+                <div class="content">
+                    <form class="form" enctype="multipart/form-data">
+                        <div class="checkbox-container">
+                            <input id="isStable" name="isStable" value="false" type="checkbox" />
+                            <label class="checkbox" for="isStable">Is Stable</label>
+                        </div>
+                        <div>
+                            <input id="versionId" type="text" name="versionId" placeholder="Version Id in format x.x.x[.x]" />
+                        </div>
+                        <div class="checkbox-container">
+                            <input id="isExpirable" name="isExpirable" value="false" type="checkbox" />
+                            <label class="checkbox" for="isExpirable">Expiration Date</label>
+                            <input id="datepicker" type="text">
+                            <input id="alternate" type="hidden" />
+                        </div>
+                        <div>
+                            <input name="file" type="file" id="me" />
+                        </div>
+                        <div>
+                            <input class="btn" type="button" id="Upload" value="Upload" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<script type="text/javascript" src="~/Scripts/jquery-2.1.0.min.js"></script>*@
+</div>
+
+@section scripts
+{
+    <script type="text/javascript" src="~/Scripts/jquery-ui-1.10.4.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#datepicker").attr('readonly', true);
+            $('#isExpirable').click(function () {
+                if ($(this).is(':checked')) {
+                    $('#datepicker').attr('readonly', false)
+                      .datepicker({ altField:"#alternate", altFormat: 'yy-mm-dd' });
+
+                } else {
+                    $('#datepicker').attr('readonly', true)
+                      .datepicker("destroy");
+
+                    $('#datepicker').val('');
+                }
+            });
+
+            $(document).on({
+                ajaxStart: function () {
+                    $('#pleasewait').show();
+                },
+                ajaxStop: function() {
+                    $('#pleasewait').hide();
+                }
+            });
+
+            $('#Upload').click(function () {
+                var formData = new FormData(),
+                    versionId = $('#versionId').val(),
+                    isStable = $('#isStable').is(":checked"),
+                    isExpirable = $('#isExpirable').is(":checked"),
+                    expirationDate = $('#alternate').val(),
+                    opmlFile = $('#me')[0];
+
+                formData.append('versionId', versionId);
+                formData.append('versionStable', isStable);
+                formData.append('expirationDate', isExpirable ? expirationDate : '');
+                formData.append('opmlFile', opmlFile.files[0]);
+
+                $.ajax({
+                    url: '../../api/versions',
+                    type: 'POST',
+                    contentType: false,
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    statusCode: {
+                        201 /*Created*/: function (data) {
+                            var ajaxUrl = '@Url.Action("ReleasesList", new { page = 1 })';
+
+                            $.ajax({
+                                type: "POST",
+                                url: ajaxUrl
+                            })
+                            .done(function (html) {
+                                $('#versionList').replaceWith(html);
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+
+
+

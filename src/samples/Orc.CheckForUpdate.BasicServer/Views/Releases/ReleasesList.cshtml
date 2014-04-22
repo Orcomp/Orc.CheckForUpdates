@@ -1,0 +1,66 @@
+﻿@using System.Globalization
+@model Orc.CheckForUpdate.Web.Models.VersionsViewModel
+
+<div id="versionList">
+    @if (this.Model.Versions.Any())
+    {
+        <div>The latest release of Rantt is found at the top of the list. If you are not sure which version to download, click on the first link.</div>
+        <div class="release-table">
+            <div class="release-row-header">
+                <div class="release-cell">#</div>
+                <div class="release-cell">Version Number</div>
+                <div class="release-cell">Stable</div>
+                <div class="release-cell">Link</div>
+                <div class="release-cell">Expiration Date</div>
+            </div>
+
+            @for (int j = 0; j < Model.Versions.Count(); j++)
+            {
+                <div class="release-row">
+                    <div class="release-cell">@((Model.PagingInfo.CurrentPage - 1) * Model.PagingInfo.ItemsPerPage + j + 1)</div>
+                    <div class="release-cell">@Model.Versions[j].Id</div>
+                    <div class="release-cell">@Model.Versions[j].Stable</div>
+                    <div class="release-cell"><a href="@Model.Versions[j].DownloadUrl">@Model.Versions[j].DownloadUrl</a></div>
+
+                    <div class="release-cell">@(Model.Versions[j].ExpirationDate.HasValue ? Model.Versions[j].ExpirationDate.Value.ToShortDateString() : "None")</div>
+                </div>
+            }
+        </div>
+
+        if (Model.PagingInfo.TotalPages > 1)
+        {
+            <div class="pagination">
+                <ul>
+                    @if (Model.PagingInfo.CurrentPage != 1)
+                    {
+                        <li>@Ajax.ActionLink("Prev", "ReleasesList", new { page = Model.PagingInfo.CurrentPage - 1, companyName = ViewBag.CompanyName }, new AjaxOptions { UpdateTargetId = "inviteList" })</li>
+                    }
+
+                    @for (int i = Model.PagingInfo.CurrentPage - 5; i < Model.PagingInfo.CurrentPage + 5; i++)
+                    {
+                        if ((i > 0) && (i <= Model.PagingInfo.TotalPages))
+                        {
+                            if (i == Model.PagingInfo.CurrentPage)
+                            {
+                                <li><span>@i</span></li>
+                            }
+                            else
+                            {
+                                <li>@Ajax.ActionLink(i.ToString(CultureInfo.InvariantCulture), "ReleasesList", new { page = i, companyName = ViewBag.CompanyName }, new AjaxOptions { UpdateTargetId = "inviteList" })</li>
+                            }
+                        }
+                    }
+
+                    @if (Model.PagingInfo.CurrentPage != Model.PagingInfo.TotalPages)
+                    {
+                        <li>@Ajax.ActionLink("Next", "ReleasesList", new { page = Model.PagingInfo.CurrentPage + 1, companyName = ViewBag.CompanyName }, new AjaxOptions { UpdateTargetId = "inviteList" })</li>
+                    }
+                </ul>
+            </div>
+        }
+    }
+    else
+    {
+        <span> There is no releases yet.</span>
+    }
+</div>

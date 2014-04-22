@@ -1,8 +1,7 @@
-﻿using System.Web;
-using System.Web.Optimization;
-
-namespace Orc.CheckForUpdate.BasicServer
+﻿namespace Orc.CheckForUpdate.BasicServer
 {
+    using System.Web.Optimization;
+
     public class BundleConfig
     {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
@@ -26,6 +25,10 @@ namespace Orc.CheckForUpdate.BasicServer
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css/releases").Include(
+                    "~/Content/themes/base/minified/jquery-ui.min.css",
+                      "~/Content/releases.css"));
         }
     }
 }

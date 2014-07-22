@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BaseDownloadController.cs" company="ORC">
+//   MS-PL
+// </copyright>
+// <summary>
+//   The base download controller.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Orc.CheckForUpdate.Web.Controllers
 {
+    using System;
     using System.IO;
+    using System.Linq;
     using System.Web;
     using System.Web.Mvc;
 
@@ -14,12 +19,15 @@ namespace Orc.CheckForUpdate.Web.Controllers
     using Orc.CheckForUpdate.Web.Abstract;
     using Orc.CheckForUpdate.Web.Models;
 
+    /// <summary>
+    /// The base download controller.
+    /// </summary>
     public class BaseDownloadController : Controller
     {
         /// <summary>
         /// The repository.
         /// </summary>
-        protected readonly IVersionRepository repository;
+        protected readonly IVersionRepository Repository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseDownloadController"/> class.
@@ -30,7 +38,7 @@ namespace Orc.CheckForUpdate.Web.Controllers
         public BaseDownloadController(IVersionRepository repository)
         {
             repository.Server = System.Web.HttpContext.Current.Server;
-            this.repository = repository;
+            this.Repository = repository;
             this.PageSize = 10;
         }
 
@@ -43,14 +51,14 @@ namespace Orc.CheckForUpdate.Web.Controllers
         /// The get view model.
         /// </summary>
         /// <param name="page">
-        /// The page.
+        /// The page number.
         /// </param>
         /// <returns>
-        /// The <see cref="VersionsViewModel"/>.
+        /// The <see cref="VersionsViewModel"/> ready for use.
         /// </returns>
         protected VersionsViewModel GetViewModel(int page)
         {
-            var list = repository.GetAll().Where(v => !v.ExpirationDate.HasValue ||
+            var list = this.Repository.GetAll().Where(v => !v.ExpirationDate.HasValue ||
                 v.ExpirationDate.Value > DateTime.Now).ToList();
 
             Uri contextUri = System.Web.HttpContext.Current.Request.Url;
@@ -85,22 +93,21 @@ namespace Orc.CheckForUpdate.Web.Controllers
         }
 
         /// <summary>
-        /// The download.
+        /// The download action.
         /// </summary>
         /// <param name="id">
-        /// The id.
+        /// The version id.
         /// </param>
         /// <returns>
-        /// The <see cref="FileResult"/>.
+        /// The <see cref="FileResult"/> file user downloads.
         /// </returns>
         public FileResult Get(string id)
         {
-            string fileName = this.repository.GetVersionFilePath(id);
-            FileInfo fileInfo = new FileInfo(fileName);
-            string contentType = "application/x-msi";
+            var fileName = this.Repository.GetVersionFilePath(id);
+            var fileInfo = new FileInfo(fileName);
+            var contentType = "application/x-msi";
 
             return new FilePathResult(fileName, contentType) { FileDownloadName = fileInfo.Name };
         }
-        
     }
 }

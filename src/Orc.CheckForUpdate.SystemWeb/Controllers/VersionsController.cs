@@ -1,4 +1,13 @@
-﻿namespace Orc.CheckForUpdate.Web.Controllers
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="VersionsController.cs" company="ORC">
+//   MS-PL
+// </copyright>
+// <summary>
+//   The versions controller.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Orc.CheckForUpdate.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -35,6 +44,9 @@
         /// <param name="repository">
         /// The repository.
         /// </param>
+        /// <param name="downloadLinkProvider">
+        /// The download Link Provider.
+        /// </param>
         public VersionsController(IVersionRepository repository, IDownloadLinkProvider downloadLinkProvider)
         {
             repository.Server = HttpContext.Current.Server;
@@ -65,10 +77,10 @@
         /// The page index.
         /// </param>
         /// <param name="beta">
-        /// The beta.
+        /// The string option which shows whether to include beta versions or not.
         /// </param>
         /// <returns>
-        /// The <see cref="IEnumerable"/>.
+        /// The list of available versions.
         /// </returns>
         public IEnumerable<Version> GetVersions(int pageSize, int pageIndex, string beta)
         {
@@ -93,12 +105,13 @@
         /// The get version.
         /// </summary>
         /// <param name="id">
-        /// The id.
+        /// The version id.
         /// </param>
         /// <returns>
-        /// The <see cref="Version"/>.
+        /// The Version <see cref="Version"/> instance with given id.
         /// </returns>
         /// <exception cref="HttpResponseException">
+        /// Thrown when version is not found.
         /// </exception>
         public Version GetVersion(string id)
         {
@@ -114,12 +127,13 @@
         }
 
         /// <summary>
-        /// The post version.
+        /// Uploads version to the server.
         /// </summary>
         /// <returns>
-        /// The <see cref="Task"/>.
+        /// The uploading task  <see cref="Task"/>.
         /// </returns>
         /// <exception cref="HttpResponseException">
+        /// Thrown if unable to extract the version file.
         /// </exception>
         [Authorize]
         public async Task<HttpResponseMessage> PostVersion()
@@ -131,7 +145,6 @@
             }
 
             string root = HttpContext.Current.Server.MapPath("~/App_Data/Temp");
-            HttpServerUtility server = HttpContext.Current.Server;
 
             if (!Directory.Exists(root))
             {
@@ -186,7 +199,7 @@
 
                 item.DownloadUrl = Url.Link("Default", new { action = "Download", id = item.Id });
 
-                var response = Request.CreateResponse<Version>(HttpStatusCode.Created, item);
+                var response = Request.CreateResponse(HttpStatusCode.Created, item);
                 response.Headers.Location = new Uri(item.DownloadUrl);
                 return response;
             }
@@ -197,15 +210,16 @@
         }
 
         /// <summary>
-        /// The put version.
+        /// Puts version.
         /// </summary>
         /// <param name="id">
-        /// The id.
+        /// The version id.
         /// </param>
         /// <param name="item">
-        /// The item.
+        /// The version instance.
         /// </param>
         /// <exception cref="NotImplementedException">
+        /// Not implemented yet.
         /// </exception>
         [Authorize]
         public void PutVersion(string id, Version item)
@@ -217,31 +231,12 @@
         /// The delete version.
         /// </summary>
         /// <param name="id">
-        /// The id.
+        /// The version id.
         /// </param>
         [Authorize]
         public void DeleteVersion(string id)
         {
             this.repository.Remove(id);
-        }
-
-        /// <summary>
-        /// The get posted file.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="HttpPostedFile"/>.
-        /// </returns>
-        /// <exception cref="HttpResponseException">
-        /// </exception>
-        private HttpPostedFile GetPostedFile()
-        {
-            var httpRequest = HttpContext.Current.Request;
-            if (httpRequest.Files.Count != 1)
-            {
-                throw new HttpResponseException(HttpStatusCode.ExpectationFailed);
-            }
-
-            return httpRequest.Files[0];
         }
     }
 }

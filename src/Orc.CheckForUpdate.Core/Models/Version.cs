@@ -1,4 +1,13 @@
-﻿namespace Orc.CheckForUpdate.Models
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Version.cs" company="ORC">
+//   MS-PL
+// </copyright>
+// <summary>
+//   The version.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Orc.CheckForUpdate.Models
 {
     using System;
 

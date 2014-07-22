@@ -1,4 +1,13 @@
-﻿namespace Orc.CheckForUpdate.Helpers
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="VersionStringHelper.cs" company="ORC">
+//   MS-PL
+// </copyright>
+// <summary>
+//   The version string helper.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Orc.CheckForUpdate.Helpers
 {
     using System;
     using System.Collections.Generic;
@@ -10,13 +19,13 @@
     public static class VersionStringHelper
     {
         /// <summary>
-        /// The is valid version string.
+        /// Checks whether provided string meets requirements to describe version number.
         /// </summary>
         /// <param name="versionNumber">
         /// The version number.
         /// </param>
         /// <returns>
-        /// The <see cref="bool"/>.
+        /// The version number validness.
         /// </returns>
         public static bool IsValidVersionString(string versionNumber)
         {
@@ -37,10 +46,10 @@
         /// The version number.
         /// </param>
         /// <param name="parts">
-        /// The parts.
+        /// All parsed parts .
         /// </param>
         /// <returns>
-        /// The <see cref="bool"/>.
+        /// True if string has been parsed successfully.
         /// </returns>
         public static bool TryParseVersionString(string versionNumber, out int[] parts)
         {
@@ -79,7 +88,10 @@
             /// The y.
             /// </param>
             /// <returns>
-            /// The <see cref="int"/>.
+            /// Result of comparison
+            /// &gt;0 if x is bigger than y
+            /// 0 if x is equal to
+            /// less than 0 if x is less than y.
             /// </returns>
             public int Compare(string x, string y)
             {

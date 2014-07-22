@@ -1,4 +1,13 @@
-﻿namespace Orc.CheckForUpdate.Web.Implementations
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="VersionFileSystemRepository.cs" company="ORC">
+//   MS-PL
+// </copyright>
+// <summary>
+//   The version file system repository.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Orc.CheckForUpdate.Web.Implementations
 {
     using System;
     using System.Collections.Generic;
@@ -22,22 +31,15 @@
         private const string InstallerNamePattern = "Rantt-{0}{1}.exe";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VersionFileSystemRepository"/> class.
-        /// </summary>
-        public VersionFileSystemRepository()
-        {
-        }
-
-        /// <summary>
         /// Gets or sets server for repository functioning.
         /// </summary>
         public HttpServerUtility Server { get; set; }
 
         /// <summary>
-        /// The get all.
+        /// Gets all available versions.
         /// </summary>
         /// <returns>
-        /// The <see cref="IEnumerable"/>.
+        /// List of available versions.
         /// </returns>
         public IEnumerable<Version> GetAll()
         {
@@ -88,10 +90,10 @@
         }
 
         /// <summary>
-        /// The get.
+        /// Gets version object. 
         /// </summary>
         /// <param name="id">
-        /// The id.
+        /// The id of the version.
         /// </param>
         /// <returns>
         /// The <see cref="Version"/>.
@@ -127,35 +129,22 @@
         }
 
         /// <summary>
-        /// The get version file path.
+        /// Gets file path of given version.
         /// </summary>
-        /// <param name="id">
-        /// The id.
-        /// </param>
-        /// <returns>
-        /// The <see cref="string"/>.
-        /// </returns>
+        /// <param name="id">The id of the version.</param>
+        /// <returns>The file path.</returns>
         public string GetVersionFilePath(string id)
         {
-            Version version = this.Get(id);
+            var version = this.Get(id);
             return this.GetVersionFileName(version, false);
         }
 
         /// <summary>
-        /// The add.
+        /// Adds file as an release version.
         /// </summary>
-        /// <param name="item">
-        /// The item.
-        /// </param>
-        /// <param name="file">
-        /// The file.
-        /// </param>
-        /// <returns>
-        /// The <see cref="Version"/>.
-        /// </returns>
-        /// <exception cref="Exception">
-        /// If file already exists.
-        /// </exception>
+        /// <param name="item">The version to be added.</param>
+        /// <param name="file">Uploaded file.</param>
+        /// <returns>Updated version instance.</returns>
         public Version Add(Version item, HttpPostedFile file)
         {
             string filePath = GetVersionFileName(item);
@@ -177,17 +166,11 @@
         }
 
         /// <summary>
-        /// The add.
+        /// Adds file as an release version.
         /// </summary>
-        /// <param name="item">
-        /// The item.
-        /// </param>
-        /// <param name="sourceFilePath">
-        /// The source file path.
-        /// </param>
-        /// <returns>
-        /// The <see cref="Version"/>.
-        /// </returns>
+        /// <param name="item">The version to be added.</param>
+        /// <param name="sourceFilePath">The path to the version file.</param>
+        /// <returns>Updated version instance.</returns>
         public Version Add(Version item, string sourceFilePath)
         {
             string filePath = this.GetVersionFileName(item);
@@ -203,17 +186,11 @@
         }
 
         /// <summary>
-        /// The update.
+        /// Updates existing version.
         /// </summary>
-        /// <param name="item">
-        /// The item.
-        /// </param>
-        /// <param name="file">
-        /// The file.
-        /// </param>
-        /// <returns>
-        /// The <see cref="bool"/>.
-        /// </returns>
+        /// <param name="item">The version to be updated.</param>
+        /// <param name="file">The newly uploaded version file.</param>
+        /// <returns>True if update was successful.</returns>
         public bool Update(Version item, HttpPostedFile file)
         {
             string filePath = this.GetVersionFileName(item);
@@ -238,17 +215,11 @@
         }
 
         /// <summary>
-        /// The update.
+        /// Updates existing version.
         /// </summary>
-        /// <param name="item">
-        /// The item.
-        /// </param>
-        /// <param name="sourceFilePath">
-        /// The source file path.
-        /// </param>
-        /// <returns>
-        /// The <see cref="bool"/>.
-        /// </returns>
+        /// <param name="item">The version to be updated.</param>
+        /// <param name="sourceFilePath">The path to the version file.</param>
+        /// <returns>True if update was successful.</returns>
         public bool Update(Version item, string sourceFilePath)
         {
             string filePath = this.GetVersionFileName(item);
@@ -257,11 +228,9 @@
         }
 
         /// <summary>
-        /// The remove.
+        /// Deletes version with given id.
         /// </summary>
-        /// <param name="id">
-        /// The id.
-        /// </param>
+        /// <param name="id">The version id.</param>
         public void Remove(string id)
         {
             string folderPath = HttpContext.Current.Server.MapPath(string.Format("~/App_Data/{0}", id));
@@ -269,16 +238,16 @@
         }
 
         /// <summary>
-        /// The get version file name.
+        /// Get file name based on version number.
         /// </summary>
         /// <param name="item">
-        /// The item.
+        /// The version instance.
         /// </param>
         /// <param name="createFolder">
-        /// The create folder.
+        /// Shows whether to create folder if ti doesn't exists.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        /// The full file path.
         /// </returns>
         private string GetVersionFileName(Version item, bool createFolder = true)
         {
@@ -293,13 +262,13 @@
         }
 
         /// <summary>
-        /// The get additional info file name.
+        /// Gets file name path for additional info.
         /// </summary>
-        /// <param name="item">
-        /// The item.
+        /// <param name="id">
+        /// The version number.
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        /// The file name path for additional info.
         /// </returns>
         private string GetAdditionalInfoFileName(string id)
         {
@@ -310,10 +279,10 @@
         /// The extract expiration date.
         /// </summary>
         /// <param name="id">
-        /// The id.
+        /// The version number.
         /// </param>
         /// <returns>
-        /// The <see cref="DateTime?"/>.
+        /// Date of expiration if any.
         /// </returns>
         private DateTime? ExtractExpirationDate(string id)
         {
@@ -331,6 +300,5 @@
 
             return null;
         }
-
     }
 }

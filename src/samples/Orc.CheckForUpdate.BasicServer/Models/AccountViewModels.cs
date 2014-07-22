@@ -1,7 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AccountViewModels.cs" company="ORC">
+//   MS-PL
+// </copyright>
+// <summary>
+//   Defines the ExternalLoginConfirmationViewModel type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Orc.CheckForUpdate.BasicServer.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

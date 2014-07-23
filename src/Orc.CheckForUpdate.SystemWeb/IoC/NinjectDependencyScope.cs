@@ -1,4 +1,13 @@
-﻿namespace Orc.CheckForUpdate.Web.IoC
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="NinjectDependencyScope.cs" company="ORC">
+//   MS-PL
+// </copyright>
+// <summary>
+//   Provides a Ninject implementation of IDependencyScope which resolves services using the Ninject container.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Orc.CheckForUpdate.Web.IoC
 {
     using System;
     using System.Collections.Generic;
@@ -38,6 +47,7 @@
         /// The <see cref="object"/>.
         /// </returns>
         /// <exception cref="ObjectDisposedException">
+        /// Throws when there is no resolver any more.
         /// </exception>
         public object GetService(Type serviceType)
         {
@@ -59,6 +69,7 @@
         /// The <see cref="IEnumerable{T}"/>.
         /// </returns>
         /// <exception cref="ObjectDisposedException">
+        /// Throws when there is no resolver any more.
         /// </exception>
         public IEnumerable<object> GetServices(Type serviceType)
         {

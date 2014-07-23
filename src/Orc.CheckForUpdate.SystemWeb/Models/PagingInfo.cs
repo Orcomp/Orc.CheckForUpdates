@@ -1,4 +1,13 @@
-﻿namespace Orc.CheckForUpdate.Web.Models
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="PagingInfo.cs" company="ORC">
+//   MS-PL
+// </copyright>
+// <summary>
+//   The paging info.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Orc.CheckForUpdate.Web.Models
 {
     using System;
 

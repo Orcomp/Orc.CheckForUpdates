@@ -1,7 +1,14 @@
-﻿using System.Collections.Generic;
-
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="VersionsViewModel.cs" company="ORC">
+//   MS-PL
+// </copyright>
+// <summary>
+//   The paging info.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 namespace Orc.CheckForUpdate.Web.Models
 {
+    using System.Collections.Generic;
     using Version = Orc.CheckForUpdate.Models.Version;
 
     /// <summary>

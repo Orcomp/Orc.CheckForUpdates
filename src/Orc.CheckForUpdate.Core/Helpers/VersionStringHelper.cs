@@ -82,10 +82,10 @@ namespace Orc.CheckForUpdate.Helpers
             /// The compare.
             /// </summary>
             /// <param name="x">
-            /// The x.
+            /// The number of first version as a string.
             /// </param>
             /// <param name="y">
-            /// The y.
+            /// The number of second version as a string.
             /// </param>
             /// <returns>
             /// Result of comparison

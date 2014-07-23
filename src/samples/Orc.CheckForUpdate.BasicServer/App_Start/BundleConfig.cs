@@ -1,10 +1,28 @@
-﻿namespace Orc.CheckForUpdate.BasicServer
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="BundleConfig.cs" company="ORC">
+//   MS-PL
+// </copyright>
+// <summary>
+//   Defines the BundleConfig type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Orc.CheckForUpdate.BasicServer
 {
     using System.Web.Optimization;
 
+    /// <summary>
+    /// The bundles config.
+    /// </summary>
     public class BundleConfig
     {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+        /// <summary>
+        /// Registers bundles.
+        /// </summary>
+        /// <param name="bundles">
+        /// The bundles.
+        /// </param>
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(

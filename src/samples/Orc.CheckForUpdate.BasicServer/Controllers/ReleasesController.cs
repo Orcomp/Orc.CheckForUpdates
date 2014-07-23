@@ -1,10 +1,22 @@
-﻿namespace Orc.CheckForUpdate.BasicServer.Controllers
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ReleasesController.cs" company="ORC">
+//   MS-PL
+// </copyright>
+// <summary>
+//   Defines the ReleasesController type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Orc.CheckForUpdate.BasicServer.Controllers
 {
     using System.Web.Mvc;
 
     using Orc.CheckForUpdate.Web.Abstract;
     using Orc.CheckForUpdate.Web.Controllers;
 
+    /// <summary>
+    /// The releases controller.
+    /// </summary>
     public class ReleasesController : BaseDownloadController
     {
         /// <summary>
@@ -17,12 +29,30 @@
             : base(repository)
         {
         }
-        
+
+        /// <summary>
+        /// The index action.
+        /// </summary>
+        /// <param name="page">
+        /// The page number.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         public ActionResult Index(int page = 1)
         {
             return View(this.GetViewModel(page));
         }
 
+        /// <summary>
+        /// The administer action.
+        /// </summary>
+        /// <param name="page">
+        /// The page number.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ActionResult"/>.
+        /// </returns>
         public ActionResult Administer(int page = 1)
         {
             return View(this.GetViewModel(page));

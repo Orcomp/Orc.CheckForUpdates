@@ -102,7 +102,7 @@
     <Compile Include="IoC\NinjectDependencyScope.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\VersionsViewModel.cs" />
-    <Compile Include="IoC\Module.cs" />
+    <Compile Include="IoC\NinjaModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -36,14 +36,5 @@ namespace Orc.CheckForUpdate.BasicServer.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether remember me.
-        /// </summary>
-        /// <value>
-        /// The remember me.
-        /// </value>
-        [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; }
     }
 }

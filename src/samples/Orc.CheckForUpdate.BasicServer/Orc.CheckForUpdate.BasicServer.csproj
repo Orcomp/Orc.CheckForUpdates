@@ -187,6 +187,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ReleasesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -303,6 +304,7 @@
     <Content Include="Views\Releases\Index.cshtml" />
     <Content Include="Views\Releases\Administer.cshtml" />
     <Content Include="Views\Releases\ReleasesList.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

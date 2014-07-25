@@ -24,7 +24,10 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Download", "Index", "Releases")</li>
-                    <li>@Html.ActionLink("Upload", "Administer", "Releases")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Upload", "Administer", "Releases")</li>
+                    }
                 </ul>
             </div>
         </div>

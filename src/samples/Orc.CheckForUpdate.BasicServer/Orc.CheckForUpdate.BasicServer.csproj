@@ -195,7 +195,6 @@
     </Compile>
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ManageUserViewModel.cs" />

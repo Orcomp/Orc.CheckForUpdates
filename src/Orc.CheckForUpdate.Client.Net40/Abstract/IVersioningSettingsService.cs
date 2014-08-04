@@ -15,7 +15,7 @@ namespace Orc.CheckForUpdate.Client
     public interface IVersioningSettingsService
     {
         /// <summary>
-        /// Gets a value indicating whether unstable versions.
+        /// Gets a value indicating whether to check for unstable versions.
         /// </summary>
         bool CheckForUnstableVersions { get; }
 

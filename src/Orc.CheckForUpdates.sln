@@ -1,9 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CheckForUpdate.Client", "Orc.CheckForUpdate.Client\Orc.CheckForUpdate.Client.csproj", "{25958475-CF30-42AF-A1D5-CC283B0F0156}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{ABE1D6A5-BAA4-4C20-9F84-EB6A43C38D62}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "basics", "basics", "{E036509A-3084-4308-8778-C7AA675957D0}"
@@ -16,16 +14,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CheckForUpdate.Web", "O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CheckForUpdate.BasicServer", "samples\Orc.CheckForUpdate.BasicServer\Orc.CheckForUpdate.BasicServer.csproj", "{01B76D0A-3EDB-48F7-BF99-2EE172FE12DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CheckForUpdate.Client.Net40", "Orc.CheckForUpdate.Client.Net40\Orc.CheckForUpdate.Client.Net40.csproj", "{FA71B57B-D692-40DB-A392-31690BB994EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.CheckForUpdate.Client.Net45", "Orc.CheckForUpdate.Client.Net45\Orc.CheckForUpdate.Client.Net45.csproj", "{4AFC192C-8866-42FC-983F-F98616B793FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{25958475-CF30-42AF-A1D5-CC283B0F0156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{25958475-CF30-42AF-A1D5-CC283B0F0156}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{25958475-CF30-42AF-A1D5-CC283B0F0156}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{25958475-CF30-42AF-A1D5-CC283B0F0156}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F174E20C-3C87-47FF-9286-02AE79A23D8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F174E20C-3C87-47FF-9286-02AE79A23D8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F174E20C-3C87-47FF-9286-02AE79A23D8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -42,6 +40,14 @@ Global
 		{01B76D0A-3EDB-48F7-BF99-2EE172FE12DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01B76D0A-3EDB-48F7-BF99-2EE172FE12DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01B76D0A-3EDB-48F7-BF99-2EE172FE12DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA71B57B-D692-40DB-A392-31690BB994EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA71B57B-D692-40DB-A392-31690BB994EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA71B57B-D692-40DB-A392-31690BB994EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA71B57B-D692-40DB-A392-31690BB994EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AFC192C-8866-42FC-983F-F98616B793FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AFC192C-8866-42FC-983F-F98616B793FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AFC192C-8866-42FC-983F-F98616B793FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AFC192C-8866-42FC-983F-F98616B793FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

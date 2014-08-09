@@ -46,6 +46,7 @@
     <Compile Include="Abstract\IVersioningService.cs" />
     <Compile Include="Abstract\IVersioningSettingsService.cs" />
     <Compile Include="Implementations\DefaultVersioningSettingsService.cs" />
+    <Compile Include="Implementations\VersioningService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

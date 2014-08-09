@@ -12,7 +12,10 @@ namespace Orc.CheckForUpdate.BasicSampleApplication.WPF.Net40
     using System.Threading;
     using System.Windows;
 
+    using Ninject;
+
     using Orc.CheckForUpdate.BasicSampleApplication.WPF.Net40.ViewModels;
+    using Orc.CheckForUpdate.Client;
 
     /// <summary>
     /// Interaction logic for App.xaml.
@@ -20,6 +23,8 @@ namespace Orc.CheckForUpdate.BasicSampleApplication.WPF.Net40
     public partial class App
     {
         private Mutex instanceMutex = null;
+
+        private IKernel kernel;
 
         /// <summary>
         /// The on startup initialization.
@@ -40,11 +45,26 @@ namespace Orc.CheckForUpdate.BasicSampleApplication.WPF.Net40
                 return;
             }
 
-            var viewModel = new MainWindowViewModel();
+            ConfigureContainer();
+
+            var viewModel = this.kernel.Get<MainWindowViewModel>();
             var window = new MainWindow { DataContext = viewModel };
+
+            var checkForUpdatesSettings = this.kernel.Get<IVersioningSettingsService>();
+            var checkForUpdatesService = this.kernel.Get<IVersioningService>();
+            if (checkForUpdatesSettings.CheckOnStartup)
+            {
+            }
 
             MainWindow = window;
             window.Show();
+        }
+
+        private void ConfigureContainer()
+        {
+            this.kernel = new StandardKernel();
+            this.kernel.Bind<IVersioningSettingsService>().To<DefaultVersioningSettingsService>().InSingletonScope();
+            this.kernel.Bind<IVersioningService>().To<VersioningService>().InSingletonScope();
         }
     }
 }

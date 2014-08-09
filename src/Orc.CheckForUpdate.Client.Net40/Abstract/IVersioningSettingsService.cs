@@ -20,6 +20,11 @@ namespace Orc.CheckForUpdate.Client
         bool CheckForUnstableVersions { get; }
 
         /// <summary>
+        /// Gets a value indicating whether to check for new version on startup event or not.
+        /// </summary>
+        bool CheckOnStartup { get; }
+
+        /// <summary>
         /// Gets the versions api url.
         /// </summary>
         string VersionsApiUrl { get; }

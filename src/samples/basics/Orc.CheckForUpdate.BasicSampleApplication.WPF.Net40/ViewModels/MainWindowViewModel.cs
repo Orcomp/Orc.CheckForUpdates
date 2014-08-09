@@ -10,16 +10,23 @@
 namespace Orc.CheckForUpdate.BasicSampleApplication.WPF.Net40.ViewModels
 {
     using Orc.CheckForUpdate.BasicSampleApplication.WPF.Net40.Models;
+    using Orc.CheckForUpdate.Client;
 
     /// <summary>
     /// The main window view model.
     /// </summary>
     public class MainWindowViewModel
     {
+        private IVersioningService versioningService;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
         /// </summary>
-        public MainWindowViewModel() : this(new MainModel())
+        /// <param name="versioningService">
+        /// The versioning Service.
+        /// </param>
+        public MainWindowViewModel(IVersioningService versioningService)
+            : this(new MainModel(), versioningService)
         {
         }
 
@@ -29,9 +36,13 @@ namespace Orc.CheckForUpdate.BasicSampleApplication.WPF.Net40.ViewModels
         /// <param name="model">
         /// The model.
         /// </param>
-        public MainWindowViewModel(MainModel model)
+        /// <param name="versioningService">
+        /// The versioning Service.
+        /// </param>
+        public MainWindowViewModel(MainModel model, IVersioningService versioningService)
         {
             Model = model;
+            this.versioningService = versioningService;
         }
 
         /// <summary>

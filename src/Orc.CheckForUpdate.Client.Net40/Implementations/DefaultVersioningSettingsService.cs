@@ -29,6 +29,17 @@ namespace Orc.CheckForUpdate.Client
         }
 
         /// <summary>
+        /// Gets a value indicating whether check on startup.
+        /// </summary>
+        public bool CheckOnStartup
+        {
+            get
+            {
+                return (ConfigurationManager.AppSettings.AllKeys.Contains("CheckOnStartup") && ConfigurationManager.AppSettings["CheckForUnstableVersions"] == bool.TrueString);
+            }
+        }
+
+        /// <summary>
         /// Gets the versions api url.
         /// </summary>
         public string VersionsApiUrl 

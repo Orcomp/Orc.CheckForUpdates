@@ -9,43 +9,46 @@
     @RenderSection("additionalstyles", required: false)
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Orc.CheckForUpdate Web Sample", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Download", "Index", "Releases")</li>
-                    @if (Request.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("Upload", "Administer", "Releases")</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Login as Admin", "Login", "Account")</li>
-                    }
-                </ul>
+    <body>
+        <div class="loading-mask" id="pleasewait">
+            <div class="loading-circle-spinner"></div>
+        </div>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Orc.CheckForUpdate Web Sample", "Index", "Home", null, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Download", "Index", "Releases")</li>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("Upload", "Administer", "Releases")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Login as Admin", "Login", "Account")</li>
+                        }
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Orc.CheckForUpdate Web Sample</p>
-        </footer>
-    </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Orc.CheckForUpdate Web Sample</p>
+            </footer>
+        </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
 </html>

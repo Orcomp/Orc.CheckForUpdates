@@ -38,7 +38,7 @@
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(_kernel);
         }
     }

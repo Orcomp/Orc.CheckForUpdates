@@ -1,0 +1,29 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Orc.CheckForUpdates</id>
+    <version>[VERSION]</version>
+    <title>Orc.CheckForUpdates</title>
+    <authors>OrchestraDevs</authors>
+    <owners>OrchestraDevs</owners>
+
+	<description>
+	  This library allows to check for updates.
+	</description>
+	<summary>
+	</summary>
+
+	<tags>orc update updates check</tags>
+
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright>Copyright Orchestra team 2010 - 2014</copyright>
+
+	<language>en-US</language>
+	<projectUrl>https://github.com/Orcomp/Orc.CheckForUpdates</projectUrl>
+	<!--<licenseUrl>http://catel.codeplex.com/license</licenseUrl>-->
+	<!--<iconUrl>http://www.catenalogic.com/catel.png</iconUrl>-->
+    
+    <dependencies>
+    </dependencies>    
+  </metadata>
+</package>

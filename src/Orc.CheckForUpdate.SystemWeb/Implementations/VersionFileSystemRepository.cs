@@ -25,10 +25,18 @@ namespace Orc.CheckForUpdate.Web.Implementations
     /// </summary>
     public class VersionFileSystemRepository : IVersionRepository
     {
+        private readonly ISettingsProvider settingsProvider;
+       
         /// <summary>
-        /// The installer name pattern.
+        /// Initializes a new instance of the <see cref="VersionFileSystemRepository"/> class.
         /// </summary>
-        private const string InstallerNamePattern = "Rantt-{0}{1}.exe";
+        /// <param name="settingsProvider">
+        /// The settings provider.
+        /// </param>
+        public VersionFileSystemRepository(ISettingsProvider settingsProvider)
+        {
+            this.settingsProvider = settingsProvider;
+        }
 
         /// <summary>
         /// Gets or sets server for repository functioning.
@@ -56,8 +64,8 @@ namespace Orc.CheckForUpdate.Web.Implementations
                     if (VersionStringHelper.IsValidVersionString(directoryInfo.Name))
                     {
                         string versionId = directoryInfo.Name;
-                        string stableName = string.Format(InstallerNamePattern, versionId, string.Empty);
-                        string betaName = string.Format(InstallerNamePattern, versionId, "-beta");
+                        string stableName = this.settingsProvider.InstallerNamePattern.Replace("{number}", versionId).Replace("{stability}", string.Empty);
+                        string betaName = this.settingsProvider.InstallerNamePattern.Replace("{number}", versionId).Replace("{stability}", "-beta"); 
 
                         string filePath = HttpContext.Current.Server.MapPath(string.Format("~/App_Data/Repository/{0}/{1}", directoryInfo.Name, stableName));
                         if (File.Exists(filePath))
@@ -100,8 +108,8 @@ namespace Orc.CheckForUpdate.Web.Implementations
         /// </returns>
         public Version Get(string id)
         {
-            string stableName = string.Format(InstallerNamePattern, id, string.Empty);
-            string betaName = string.Format(InstallerNamePattern, id, "-beta");
+            string stableName = this.settingsProvider.InstallerNamePattern.Replace("{number}", id).Replace("{stability}", string.Empty);
+            string betaName = this.settingsProvider.InstallerNamePattern.Replace("{number}", id).Replace("{stability}", "-beta"); 
 
             string filePath = HttpContext.Current.Server.MapPath(string.Format("~/App_Data/Repository/{0}/{1}", id, stableName));
             if (File.Exists(filePath))
@@ -256,8 +264,10 @@ namespace Orc.CheckForUpdate.Web.Implementations
             {
                 Directory.CreateDirectory(folderPath);
             }
-
-            string fileName = string.Format(InstallerNamePattern, item.Id, item.Stable ? string.Empty : "-beta");
+            
+            string fileName =
+                this.settingsProvider.InstallerNamePattern.Replace("{number}", item.Id)
+                    .Replace("{stability}", item.Stable ? string.Empty : "-beta");
             return this.Server.MapPath(string.Format("~/App_Data/Repository/{0}/{1}", item.Id, fileName));
         }
 

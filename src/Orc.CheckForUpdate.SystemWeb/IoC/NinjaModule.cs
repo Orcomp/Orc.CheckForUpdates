@@ -24,6 +24,7 @@ namespace Orc.CheckForUpdate.Web.IoC
         /// </summary>
         public override void Load()
         {
+            Bind<ISettingsProvider>().To<SettingsProvider>();
             Bind<IVersionRepository>().To<VersionFileSystemRepository>();
             Bind<IDownloadLinkProvider>().To<DownloadLinkProvider>();
         }

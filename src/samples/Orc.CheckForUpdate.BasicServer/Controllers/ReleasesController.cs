@@ -57,5 +57,19 @@ namespace Orc.CheckForUpdate.BasicServer.Controllers
         {
             return View(this.GetViewModel(page));
         }
+
+        /// <summary>
+        /// The releases list.
+        /// </summary>
+        /// <param name="page">
+        /// The page.
+        /// </param>
+        /// <returns>
+        /// The <see cref="PartialViewResult"/>.
+        /// </returns>
+        public PartialViewResult ReleasesList(int page = 1)
+        {
+            return this.PartialView("ReleasesList", this.GetViewModel(page));
+        }
     }
 }
